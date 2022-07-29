@@ -16,9 +16,11 @@ class FormScreen extends StatelessWidget {
               children: [
                 TextFormField(
                   decoration: new InputDecoration(labelText: "ชื่อรายการ"),
+                  autofocus: true,
                 ),
                 TextFormField(
                   decoration: new InputDecoration(labelText: "จำนวนเงิน"),
+                  keyboardType: TextInputType.number,
                 ),
                 FlatButton(
                   child: Text("เพิ่มข้อมูล"),
