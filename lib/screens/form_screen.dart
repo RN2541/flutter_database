@@ -8,6 +8,18 @@ class FormScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text("แบบฟอร์มบันทึกข้อมูล"),
         ),
-        body: Container());
+        body: Form(
+          child: Column(
+            children: [
+              TextFormField(
+                decoration: new InputDecoration(labelText: "ชื่อรายการ"),
+              ),
+              TextFormField(
+                decoration: new InputDecoration(labelText: "จำนวนเงิน"),
+              ),
+              FlatButton(onPressed: null, child: Text("เพิ่มข้อมูล"))
+            ],
+          ),
+        ));
   }
 }
