@@ -17,7 +17,12 @@ class FormScreen extends StatelessWidget {
               TextFormField(
                 decoration: new InputDecoration(labelText: "จำนวนเงิน"),
               ),
-              FlatButton(onPressed: null, child: Text("เพิ่มข้อมูล"))
+              FlatButton(
+                child: Text("เพิ่มข้อมูล"),
+                color: Colors.grey,
+                textColor: Colors.white,
+                onPressed: () {},
+              )
             ],
           ),
         ));
