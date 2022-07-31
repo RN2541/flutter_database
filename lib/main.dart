@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_database/providers/transaction_provider.dart';
 import 'package:flutter_database/screens/form_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,12 +11,19 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) {
+          return TransactionProvider();
+        }),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+        ),
+        home: const MyHomePage(title: 'แอพบัญชี'),
       ),
-      home: const MyHomePage(title: 'แอพบัญชี'),
     );
   }
 }
@@ -44,22 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 })
           ],
         ),
-        body: ListView.builder(
-            itemCount: 4,
-            itemBuilder: (context, int index) {
-              return Card(
-                elevation: 5,
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                child: ListTile(
-                  leading: CircleAvatar(
-                      radius: 30,
-                      child: FittedBox(
-                        child: Text("500"),
-                      )),
-                  title: Text("รายการ"),
-                  subtitle: Text("02/01/2022"),
-                ),
-              );
-            }));
+        body: Consumer(
+          builder: (context, TransactionProvider provider, Widget child) {},
+        ));
   }
 }
