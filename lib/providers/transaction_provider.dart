@@ -1,16 +1,16 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_database/models/Transaction.dart';
+import 'package:flutter_database/models/Transactions.dart';
 
 class TransactionProvider with ChangeNotifier {
   // ตัวอย่างข้อมูล
-  List<Transaction> transactions = [];
+  List<Transactions> transactions = [];
 
   // ดึงข้อมูล
-  List<Transaction> getTransaction() {
+  List<Transactions> getTransaction() {
     return transactions;
   }
 
-  void addTransaction(Transaction statement) {
+  void addTransaction(Transactions statement) {
     transactions.insert(0, statement);
     //แจ้งเตือน Consumer
     notifyListeners();

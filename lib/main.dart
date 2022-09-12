@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_database/models/Transaction.dart';
+import 'package:flutter_database/models/Transactions.dart';
 import 'package:flutter_database/providers/transaction_provider.dart';
 import 'package:flutter_database/screens/form_screen.dart';
 import 'package:provider/provider.dart';
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return ListView.builder(
                   itemCount: cout,
                   itemBuilder: (context, int index) {
-                    Transaction data = provider.transactions[index];
+                    Transactions data = provider.transactions[index];
                     return Card(
                       elevation: 5,
                       margin: const EdgeInsets.symmetric(
