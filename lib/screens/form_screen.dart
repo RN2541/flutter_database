@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_database/models/Transaction.dart';
+import 'package:flutter_database/providers/transaction_provider.dart';
+import 'package:provider/provider.dart';
 
 class FormScreen extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -55,8 +58,16 @@ class FormScreen extends StatelessWidget {
                       var title = titleController.text;
                       var amount = amountController.text;
 
-                      print(title);
-                      print(amount);
+                      //เตรียมข้อมูล
+                      Transaction statement = Transaction(
+                          title: title,
+                          amount: double.parse(amount),
+                          date: DateTime.now());
+
+                      //เรียก Provider
+                      var provider = Provider.of<TransactionProvider>(context,
+                          listen: false);
+                      provider.addTransaction(statement);
                       Navigator.pop(context);
                     }
                   },
