@@ -56,25 +56,35 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Consumer(
           builder: (context, TransactionProvider provider, child) {
-            return ListView.builder(
-                itemCount: provider.transactions.length,
-                itemBuilder: (context, int index) {
-                  Transaction data = provider.transactions[index];
-                  return Card(
-                    elevation: 5,
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                          radius: 30,
-                          child: FittedBox(
-                            child: Text(data.amount.toString()),
-                          )),
-                      title: Text(data.title),
-                      subtitle: Text(data.date.toString()),
-                    ),
-                  );
-                });
+            var cout = provider.transactions.length; //นับจำนวนข้อมูล
+            if (cout <= 0) {
+              return Center(
+                child: Text(
+                  "ไม่พบข้อมูล",
+                  style: TextStyle(fontSize: 35),
+                ),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: cout,
+                  itemBuilder: (context, int index) {
+                    Transaction data = provider.transactions[index];
+                    return Card(
+                      elevation: 5,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 5),
+                      child: ListTile(
+                        leading: CircleAvatar(
+                            radius: 30,
+                            child: FittedBox(
+                              child: Text(data.amount.toString()),
+                            )),
+                        title: Text(data.title),
+                        subtitle: Text(data.date.toString()),
+                      ),
+                    );
+                  });
+            }
           },
         ));
   }
