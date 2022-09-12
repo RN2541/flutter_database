@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class FormScreen extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
+
+  //  controller
+  final titleController = TextEditingController(); //รับค่าชื่อรายการ
+  final amountController = TextEditingController(); //รับตัวเลขจำนวนเงิน
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +23,7 @@ class FormScreen extends StatelessWidget {
                 TextFormField(
                   decoration: new InputDecoration(labelText: "ชื่อรายการ"),
                   autofocus: true,
+                  controller: titleController,
                   validator: (String? str) {
                     ////ชื่อรายการค่าว่าง
                     if (str!.isEmpty) {
@@ -29,6 +35,7 @@ class FormScreen extends StatelessWidget {
                 TextFormField(
                   decoration: new InputDecoration(labelText: "จำนวนเงิน"),
                   keyboardType: TextInputType.number,
+                  controller: amountController,
                   validator: (String? str) {
                     if (str!.isEmpty) {
                       return "กรุณาป้อนจำนวนเงิน";
@@ -45,6 +52,11 @@ class FormScreen extends StatelessWidget {
                   textColor: Colors.white,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
+                      var title = titleController.text;
+                      var amount = amountController.text;
+
+                      print(title);
+                      print(amount);
                       Navigator.pop(context);
                     }
                   },
