@@ -6,7 +6,8 @@ class TransactionProvider with ChangeNotifier {
   List<Transaction> transactions = [
     Transaction(title: "ซื้อหนังสือ", amount: 500, date: DateTime.now()),
     Transaction(title: "เสื้อผ้า", amount: 900, date: DateTime.now()),
-    Transaction(title: "กางเกง", amount: 400, date: DateTime.now())
+    Transaction(title: "กางเกง", amount: 400, date: DateTime.now()),
+    Transaction(title: "นาฬิกา", amount: 2400, date: DateTime.now())
   ];
 
   // ดึงข้อมูล

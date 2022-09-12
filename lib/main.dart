@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Text(data.amount.toString()),
                           )),
                       title: Text(data.title),
-                      subtitle: Text("02/01/2022"),
+                      subtitle: Text(data.date.toString()),
                     ),
                   );
                 });
